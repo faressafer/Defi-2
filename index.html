@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fiche presence</title>
+</head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+img{
+    width: 190px;
+}
+hr {
+  border: 1px solid #9988fc;
+  margin-bottom: 25px;
+}
+
+button {
+  background-color: #5030df;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.7;
+}
+
+button:hover {
+  opacity:1;
+}
+
+
+.submitbtn {
+  float: left;
+  width: 100%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+    .signupbtn {
+     width: 100%;
+  }
+}
+</style>
+<body>
+        <form action="https://sheetdb.io/api/v1/i3qe2sj0annsb" method="post" id="sheetdb-form">
+            <div class="container">
+            <img src="Logo.png" alt="">
+            <h1>Fiche Presence</h1>
+            <p>Svp remplir ce Formulaire pour verifier votre presence</p>
+            <hr>
+            <br>
+            <label for="Nom"><b>Nom</label>
+            <input type="text" placeholder="Enter Nom" name="data[Nom]" required>
+        
+            <label for="Prenom"><b>Prénom</b></label>
+            <input type="text" placeholder="Enter Prenom" name="data[Prenom]" required>
+        
+            <label for="Status"><b>Status</b></label>
+            <input type="text" placeholder="MembreJunior/MembreSenior/MembreBureau" name="data[Status]" required>
+        
+            
+            <div class="clearfix">
+                <button type="submit" class="submitbtn">Submit</button>
+            </div>
+            </div>
+        </form>
+        <script>
+            var from = document.getElementById('sheetdb-form');
+            from.addEventListener("submit", e =>{
+                e.preventDefault();
+                fetch(from.action, {
+                    method : "POST",
+                    body: new FormData(document.getElementById("sheetdb-form")),
+                }).then(
+                    response => response.json()
+                ).then(html => {
+                    window.open('test.html', '_blank');
+                })
+            })
+        </script>
+</body>
+</html>
